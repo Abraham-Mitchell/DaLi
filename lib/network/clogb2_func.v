@@ -44,15 +44,46 @@ out = ceil(log2(depth))
 */
 
 
+// `ifndef FUNC_clogb2
+// `define FUNC_clogb2
+
+
+// function automatic integer clogb2;
+// 	input integer depth;
+// 	for (clogb2=0; depth>0; clogb2=clogb2+1)
+// 		depth = depth >> 1;
+// endfunction
+
+
+// `endif // FUNC_clogb2
+
+
+//function above as written gives error "Port depth of type input is being assigned"
+//modification of function should hopefully remove this while keeping functionality the same. Hopefully
+
 `ifndef FUNC_clogb2
 `define FUNC_clogb2
 
-
 function automatic integer clogb2;
-	input integer depth;
-	for (clogb2=0; depth>0; clogb2=clogb2+1)
-		depth = depth >> 1;
+    input integer depth;
+    integer temp;  // Temporary variable
+    begin
+        temp = depth;              // Copy the input to a temporary variable
+        clogb2 = 0;                // Initialize the output
+        while (temp > 0) begin
+            temp = temp >> 1;       // Shift the temporary variable
+            clogb2 = clogb2 + 1;    // Increment the counter
+        end
+    end
 endfunction
 
-
 `endif // FUNC_clogb2
+
+
+
+
+
+
+
+
+
