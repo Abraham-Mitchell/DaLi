@@ -88,19 +88,7 @@ output  [OPN_WIDTH-1:0]         opnY;
 
 // Internal signals
 (* extract_enable = "yes" *)
-// reg  [OPMUX_CONF_WIDTH-1:0]  conf_reg = 0;     // default reset value; no explicit reset
-//Line 91 as written gives the following warning "The construct 'declaration initial assignment' is not supported in synthesis; it is ignored. (VER-708)"
-//newly added line below should hopefully use a synthesis directive to achieve the same result with no functional changes
-
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-(* init = 0 *) reg  [OPMUX_CONF_WIDTH-1:0]  conf_reg = 0;
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+reg  [OPMUX_CONF_WIDTH-1:0]  conf_reg = 0;     // default reset value; no explicit reset
 	
 // Load configuration to the conf_reg register when requested
 always @(posedge clk) begin
